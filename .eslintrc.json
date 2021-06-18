@@ -7,7 +7,7 @@
     "prettier/react",
     "prettier/@typescript-eslint"
   ],
-  "plugins": ["@emotion", "@typescript-eslint", "react", "prettier"],
+  "plugins": ["@typescript-eslint", "react", "prettier"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
