@@ -6,5 +6,8 @@
         "runtime": "automatic"
       }
     ]
-  ]
+  ],
+  "plugins": [
+    "superjson-next"
+  ],
 }
