@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 
 import Layout from 'components/layout';
 
-const Post = ({ todo }) => (
+const Todo = ({ todo }) => (
   <>
     <Head>
       <title>Todos</title>
@@ -13,6 +13,7 @@ const Post = ({ todo }) => (
     <Layout>
       <h1>Todo: {todo.title}</h1>
       <pre>{JSON.stringify(todo, null, 4)}</pre>
+      <button>Delete Todo</button>
     </Layout>
   </>
 );
@@ -27,4 +28,4 @@ export const getServerSideProps = async ({ params: { todoId } }) => {
 
   return { props: { todo } };
 };
-export default Post;
+export default Todo;

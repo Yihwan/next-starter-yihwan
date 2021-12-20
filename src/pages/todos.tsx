@@ -20,6 +20,7 @@ const Todos = ({ todos }) => (
           </li>
         ))}
       </ul>
+      <Link href={'/todos/create'}>Create Todo</Link>
     </Layout>
   </>
 );
