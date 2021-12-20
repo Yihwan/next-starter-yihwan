@@ -1,24 +1,30 @@
 import Head from 'next/head';
-import { useRouter } from 'next/router';
+import { PrismaClient } from '@prisma/client';
 
 import Layout from 'components/layout';
 
-const Post = () => {
-  const router = useRouter();
-  const { todoId } = router.query;
+const Post = ({ todo }) => (
+  <>
+    <Head>
+      <title>Todos</title>
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
 
-  return (
-    <>
-      <Head>
-        <title>Todos</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Layout>
+      <h1>Todo: {todo.title}</h1>
+      <pre>{JSON.stringify(todo, null, 4)}</pre>
+    </Layout>
+  </>
+);
 
-      <Layout>
-        <h1>Todo: {todoId}</h1>
-      </Layout>
-    </>
-  );
+export const getServerSideProps = async ({ params: { todoId } }) => {
+  const prisma = new PrismaClient();
+  const todo = await prisma.todo.findUnique({
+    where: {
+      id: parseInt(todoId),
+    },
+  });
+
+  return { props: { todo } };
 };
-
 export default Post;

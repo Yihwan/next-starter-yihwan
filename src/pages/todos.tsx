@@ -16,7 +16,7 @@ const Todos = ({ todos }) => (
       <ul>
         {todos.map((todo) => (
           <li key={todo.id}>
-            <Link href={`todos/${todo.id}/`}>{todo.title}</Link>
+            <Link href={`/todos/${todo.id}`}>{todo.title}</Link>
           </li>
         ))}
       </ul>
@@ -24,7 +24,7 @@ const Todos = ({ todos }) => (
   </>
 );
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const prisma = new PrismaClient();
   const todos = await prisma.todo.findMany({
     select: {
@@ -36,6 +36,6 @@ export async function getStaticProps() {
   return {
     props: { todos },
   };
-}
+};
 
 export default Todos;
