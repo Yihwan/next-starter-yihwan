@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { PrismaClient } from '@prisma/client';
 
+import prisma from 'lib/prisma';
 import Layout from 'components/layout';
 
 const Todos = ({ todos }) => (
@@ -26,7 +26,6 @@ const Todos = ({ todos }) => (
 );
 
 export const getStaticProps = async () => {
-  const prisma = new PrismaClient();
   const todos = await prisma.todo.findMany({
     select: {
       id: true,

@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import { PrismaClient } from '@prisma/client';
 
+import prisma from 'lib/prisma';
 import Layout from 'components/layout';
 
 const Todo = ({ todo }) => (
@@ -19,7 +19,6 @@ const Todo = ({ todo }) => (
 );
 
 export const getServerSideProps = async ({ params: { todoId } }) => {
-  const prisma = new PrismaClient();
   const todo = await prisma.todo.findUnique({
     where: {
       id: parseInt(todoId),
