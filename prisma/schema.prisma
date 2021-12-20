@@ -8,9 +8,9 @@ datasource db {
 }
 
 model Todo {
-  id            Int      @id @default(autoincrement())
-  title         String   @db.VarChar(255)
+  id            Int       @id @default(autoincrement())
+  title         String    @db.VarChar(255)
   description   String?
-  isDone        Boolean
-  createdAt     DateTime @default(now()) @db.Timestamp(6)
+  isDone        Boolean   @default(false)
+  createdAt     DateTime  @default(now()) @db.Timestamp(6)
 }
