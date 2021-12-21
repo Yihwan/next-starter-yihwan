@@ -13,13 +13,15 @@ const CreateTodo = () => {
     const body = { title, description };
 
     try {
-      await fetch('/api/todo/', {
+      const result = await fetch('/api/todo/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       });
 
-      await Router.push('/todos');
+      const { id } = await result.json();
+
+      await Router.push(`/todos/${id}`);
     } catch (error) {
       alert(error);
     }

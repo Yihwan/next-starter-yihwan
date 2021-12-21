@@ -3,6 +3,18 @@ import prisma from 'lib/prisma';
 const handle = async (request, response) => {
   const { todoId } = request.query;
 
+  if (request.method === 'GET') {
+    const result = await prisma.todo.findUnique({
+      where: {
+        id: parseInt(todoId),
+      },
+    });
+
+    response.json(result);
+
+    return;
+  }
+
   if (request.method === 'PATCH') {
     const { isDone } = request.body;
 
