@@ -24,6 +24,7 @@ const CreateTodo = () => {
       alert(error);
     }
   };
+
   return (
     <>
       <Head>
